@@ -8,19 +8,8 @@ BEGIN {
 }
 
 function idiv(n,d) { return (n-n%d)/d }
-function toint(v) {
-  if (v >= 0) return and(v, INTMASK)
-  return and(compl(-v), INTMASK)+1
-}
-
-function fromint(v) {
-  if (and(SIGNMASK,v)>0) {
-    return -(and(compl(v), INTMASK)+1)
-  } else {
-    return v
-  }
-}
-
+function toint(v)  { return (v >= 0) ? and(v, INTMASK) : and(compl(-v), INTMASK)+1 }
+function fromint(v){ return (and(SIGNMASK,v)>0) ? -(and(compl(v), INTMASK)+1) : v  }
 function ixor(a,b) { return fromint(xor(toint(a),toint(b))) }
 function ior (a,b) { return fromint( or(toint(a),toint(b))) }
 function iand(a,b) { return fromint(and(toint(a),toint(b))) }
