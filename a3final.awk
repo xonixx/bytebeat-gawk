@@ -21,23 +21,6 @@ function fromint(v) {
   }
 }
 
-function ixor(a,b,   a1,b1,c1) {
-  a1=toint(a)
-  b1=toint(b)
-  c1=xor(a1,b1)
-  return fromint(c1)
-}
-
-function ior(a,b,   a1,b1,c1) {
-  a1=toint(a)
-  b1=toint(b)
-  c1=or(a1,b1)
-  return fromint(c1)
-}
-
-function iand(a,b,   a1,b1,c1) {
-  a1=toint(a)
-  b1=toint(b)
-  c1=and(a1,b1)
-  return fromint(c1)
-}
+function ixor(a,b) { return fromint(xor(toint(a),toint(b))) }
+function ior (a,b) { return fromint( or(toint(a),toint(b))) }
+function iand(a,b) { return fromint(and(toint(a),toint(b))) }
