@@ -1,30 +1,44 @@
-
 BEGIN {
   INTMASK=lshift(1,32)-1
   SIGNMASK=lshift(1,31)
-#  print hex(INTMASK)
-#  test(2)
-#  test(0)
-#  test(-1)
-#  test(-2)
-#  test(-3)
-#  test(-4)
-#  test(-5)
-#  test(-6)
-#  test(-7)
-#  test(-10)
-#  for (i=10;i>=-10;i--) {
-#    test(i)
-#  }
-  print xxor(5,2)   # 7
-  print xxor(5,-2)  # -5
-  print xxor(-5,2)  # -7
-  print xxor(-5,-2) # 5
+  #  print hex(INTMASK)
+  #  test(2)
+  #  test(0)
+  #  test(-1)
+  #  test(-2)
+  #  test(-3)
+  #  test(-4)
+  #  test(-5)
+  #  test(-6)
+  #  test(-7)
+  #  test(-10)
+  #  for (i=10;i>=-10;i--) {
+  #    test(i)
+  #  }
+
+  #  print ixor(5,2)   # 7
+  #  print ixor(5,-2)  # -5
+  #  print ixor(-5,2)  # -7
+  #  print ixor(-5,-2) # 5
+
+  print idiv(4,2)  #
+  print idiv(5,2)  #
+  print idiv(2,4)  #
+  print idiv(-2,4) #
+  print idiv(-1,1) #
+
 }
 
 function test(v,   n) {
   print v " -> " (n=toint(v)) ", " hex(n) ", " hex(compl(v >= 0 ? v : -v))
 }
+
+# https://stackoverflow.com/a/26195966/104522
+function idiv(n,d) {
+#  return (n-n%d)/d+(n<0)
+  return (n-n%d)/d
+}
+
 
 function hex(n) { return sprintf("%#x", n) "=" bits2str(n) }
 
@@ -42,7 +56,7 @@ function fromint(v) {
   }
 }
 
-function xxor(a,b,   a1,b1,c1) {
+function ixor(a,b,   a1,b1,c1) {
   a1=toint(a)
   b1=toint(b)
   c1=xor(a1,b1)
