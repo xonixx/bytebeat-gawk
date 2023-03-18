@@ -1,7 +1,7 @@
 
 BEGIN {
   INTMASK=lshift(1,32)-1
-  SIGNMASK=lshift(1,32)-1
+  SIGNMASK=lshift(1,31)
 #  print hex(INTMASK)
 #  test(2)
 #  test(0)
@@ -16,10 +16,10 @@ BEGIN {
 #  for (i=10;i>=-10;i--) {
 #    test(i)
 #  }
-  print xxor(5,2)
-  print xxor(5,-2)
-  print xxor(-5,2)
-  print xxor(-5,-2)
+  print xxor(5,2)   # 7
+  print xxor(5,-2)  # -5
+  print xxor(-5,2)  # -7
+  print xxor(-5,-2) # 5
 }
 
 function test(v,   n) {
@@ -35,6 +35,7 @@ function toint(v) {
 
 function fromint(v) {
   if (and(SIGNMASK,v)>0) {
+    #print "here ", v
     return -(and(compl(v), INTMASK)+1)
   } else {
     return v
