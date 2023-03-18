@@ -1,7 +1,8 @@
 
 BEGIN {
   INTMASK=lshift(1,32)-1
-  print hex(INTMASK)
+  SIGNMASK=lshift(1,32)-1
+#  print hex(INTMASK)
 #  test(2)
 #  test(0)
 #  test(-1)
@@ -12,9 +13,13 @@ BEGIN {
 #  test(-6)
 #  test(-7)
 #  test(-10)
-  for (i=10;i>=-10;i--) {
-    test(i)
-  }
+#  for (i=10;i>=-10;i--) {
+#    test(i)
+#  }
+  print xxor(5,2)
+  print xxor(5,-2)
+  print xxor(-5,2)
+  print xxor(-5,-2)
 }
 
 function test(v,   n) {
@@ -28,8 +33,19 @@ function toint(v) {
   return and(compl(-v), INTMASK)+1
 }
 
-function xxor(a,b) {
+function fromint(v) {
+  if (and(SIGNMASK,v)>0) {
+    return -(and(compl(v), INTMASK)+1)
+  } else {
+    return v
+  }
+}
 
+function xxor(a,b,   a1,b1,c1) {
+  a1=toint(a)
+  b1=toint(b)
+  c1=xor(a1,b1)
+  return fromint(c1)
 }
 
 function bits2str(bits,        data, mask)
