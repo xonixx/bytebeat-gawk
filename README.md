@@ -1,6 +1,12 @@
 # Bytebeat with Gawk
 
-https://www.youtube.com/watch?v=qOenoyBO7XY
+Article: https://maximullaris.com/bytebeat_gawk.html
+
+Link to YouTube (please turn down the volume a bit before you click, just in case):
+
+[![Bytebeat with Gawk](https://img.youtube.com/vi/qOenoyBO7XY/0.jpg)](https://www.youtube.com/watch?v=qOenoyBO7XY)
+
+
 
 ## What is bytebeat?
 
