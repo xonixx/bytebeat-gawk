@@ -1,0 +1,2 @@
+./m.awk.sh | aplay -f u8 -r 44100
+./m.js.sh | aplay -f u8 -r 44100
